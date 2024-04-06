@@ -17,7 +17,7 @@ class ClosedLoopControl(Node):
     def publish_velocity(self, pose:Pose):
         cmd = Twist()
 
-        if pose.x > 9.0 or 2.0 > pose.x:
+        if pose.x > 9.0 or 2.0 > pose.x or pose.y > 9.0 or 2.0 > pose.y:
             cmd.linear.x = 1.0
             cmd.angular.z = 0.7
 
