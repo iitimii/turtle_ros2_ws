@@ -8,13 +8,13 @@ class DrawCircleNode_Class(Node):
     def __init__(self) -> None:
         super().__init__("Draw_Cricle")
         self.cmd_vel_pub_ = self.create_publisher(Twist, "/turtle1/cmd_vel", 10)
-        self.timer_ = self.create_timer(0.5, self.send_velocity)
+        self.timer_ = self.create_timer(0.5, self.send_velocity_cmd)
         self.get_logger().info("Draw Circle Node Started")
 
-    def send_velocity(self):
+    def send_velocity_cmd(self):
         msg = Twist()
-        msg.linear.x = 2.0
-        msg.angular.z = 1.0
+        msg.linear.x = 3.0
+        msg.angular.z = 3.0
         self.cmd_vel_pub_.publish(msg)
         
 
