@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             "test_node = turtle_controller.first_node:main",
-            "draw_circle = turtle_controller.draw_circle:main"
+            "draw_circle = turtle_controller.draw_circle:main",
+            "closed_control = turtle_controller.closed_loop_control:main"
         ],
     },
 )
