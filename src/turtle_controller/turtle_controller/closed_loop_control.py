@@ -12,13 +12,21 @@ class ClosedLoopControl(Node):
         self.sub = self.create_subscription(Pose, "/turtle1/pose", self.publish_velocity, 10)
         self.pub = self.create_publisher(Twist, "/turtle1/cmd_vel", 10)
 
-        self.get_logger("Closed Loop Control is ON!")
+        self.get_logger().info("Closed Loop Control is ON!")
 
-    def publish_velocity(self):
-        msg = Twist
-        msg.angular = 3.0
-        msg.linear = 3.0
-        self.pub.publish(msg)
+    def publish_velocity(self, pose:Pose):
+        cmd = Twist()
+
+        if pose.x > 9.0 or 2.0 > pose.x:
+            cmd.linear.x = 1.0
+            cmd.angular.z = 0.7
+
+        else:
+            cmd.linear.x = 5.0
+            cmd.angular.z = 0.0
+
+
+        self.pub.publish(cmd)
 
 
 def main(args=None):
